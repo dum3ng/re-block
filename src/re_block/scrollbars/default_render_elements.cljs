@@ -8,7 +8,7 @@
   [{style :style :as p} & children]
   (let [style (merge style {:right 2
                             :bottom 2
-                            :top 2
+                            :left 2
                             :border-radius 3})]
     (into [:div (assoc p :style style)]  children)))
 

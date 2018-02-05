@@ -12,7 +12,7 @@
 
 (defn get-inner-width
   [el]
-  (let [client-width (.-clientHeight el)
+  (let [client-width (.-clientWidth el)
         s (js/getComputedStyle el)
         padding-left (. s -paddingLeft)
         padding-right (. s -paddingRight)]

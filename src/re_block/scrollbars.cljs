@@ -19,3 +19,11 @@
                  [:div {:style {:background "gray"
                                :height 300}}
                   "hello ..."]]))
+
+(defcard scrollbars-horizontal-demo
+  (r/as-element [scrollbars {:style {:width 100
+                                     :height 100}}
+                 [:div {:style {:background "gray"
+                                :width 300
+                                :height 300}}
+                  "horizontal and vertical ..."]]))

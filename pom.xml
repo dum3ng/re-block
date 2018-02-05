@@ -3,17 +3,22 @@
   <groupId>re-block</groupId>
   <artifactId>re-block</artifactId>
   <packaging>jar</packaging>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.1.0</version>
   <name>re-block</name>
-  <description>FIXME: write this!</description>
-  <url>http://example.com/FIXME</url>
+  <description>some ui component for reagent.</description>
+  <url>http://github.com/dum3ng/re-block</url>
   <licenses>
     <license>
       <name>Eclipse Public License</name>
       <url>http://www.eclipse.org/legal/epl-v10.html</url>
     </license>
   </licenses>
-  <scm/>
+  <scm>
+    <url>https://github.com/dum3ng/re-block</url>
+    <connection>scm:git:git://github.com/dum3ng/re-block.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/dum3ng/re-block.git</developerConnection>
+    <tag>150082b5c973e5cbe76c63e8fd5aa2dcbe285306</tag>
+  </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
