@@ -7,5 +7,10 @@
   (testing "css test"
     (let [div (js/document.createElement "div")
           cssed (css div {:width "10px"
+                          :top 20
+                          :font-size 16
                           :user-select "none"})]
-      (is (= "10px" (aget cssed "style" "width"))))))
+      (is (= "10px" (aget cssed "style" "width"))
+          (= "20px" (aget cssed "style" "top"))
+          (= "16px" (aget cssed "style" "fontSize"))
+          ))))

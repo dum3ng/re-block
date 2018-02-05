@@ -1,6 +1,6 @@
-(defproject re-block "0.1.0-SNAPSHOT"
-  :description "FIXME: write this!"
-  :url "http://example.com/FIXME"
+(defproject re-block "0.1.0"
+  :description "some ui component for reagent."
+  :url "http://github.com/dum3ng/re-block"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
