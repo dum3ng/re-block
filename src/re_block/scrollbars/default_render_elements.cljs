@@ -23,13 +23,13 @@
 (defn render-thumb-horizontal-default
   [{style :style :as p} & children]
   (let [style (merge style {:cursor "pointer"
-                            :border-raidus "inherit"
+                            :border-radius "inherit"
                             :background-color "rgba(0,0,0,0.2)"})]
     (into [:div (assoc p :style style)]  children) ))
 
 (defn render-thumb-vertical-default
   [{style :style :as p} & children]
   (let [style (merge style {:cursor "pointer"
-                            :border-raidus "inherit"
+                            :border-radius "inherit"
                             :background-color "rgba(0,0,0,0.2)"})]
     (into [:div (assoc p :style style)]  children) ))

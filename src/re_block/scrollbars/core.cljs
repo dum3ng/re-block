@@ -15,10 +15,6 @@
   [& os]
   (apply js/Object.assign   #js{} os ))
 
-(defn- react-style
-  [style]
-  (let [s ()]))
-
 
 (defn- clone-element
   " the view is a vector with
@@ -33,13 +29,6 @@
          [tag props children]
          (into [tag props] children))
        (into [tag props ] old)))))
-;; (defn create-element
-;;   [tag p children]
-;;   (.createElement js/React tag p children))
-
-;; (defn clone-element
-;;   [tag p children]
-;;   (.cloneElement js/React tag p ))
 
 
 (defn- get-scroll
@@ -54,6 +43,12 @@
     0
     (aget c "view" (str "client" (string/capitalize (name p))))))
 
+(defn- valid-number?
+  [n]
+  (if (and (number? n) (js/isFinite n))
+    n
+    false))
+
 (defn- get-values
   [c]
   (let [view (or (.-view c) #js{})
@@ -64,8 +59,8 @@
         client-width (or (.-clientWidth view) 0)
         client-height (or (.-clientHeight view) 0)
         ]
-    {:left (or (/ scroll-left (- scroll-width client-width)) 0)
-     :top (or (/ scroll-top (- scroll-height client-height)) 0)
+    {:left (or (valid-number? (/ scroll-left (- scroll-width client-width))) 0)
+     :top (or (valid-number? (/ scroll-top (- scroll-height client-height))) 0)
      :scroll-left scroll-left
      :scroll-top scroll-top
      :scroll-width scroll-width
@@ -152,7 +147,6 @@
     nil
     (let [{:keys [view trackHorizontal trackVertical thumbHorizontal thumbVertical]} (uu/$$ c :view :trackHorizontal :trackVertical :thumbHorizontal :thumbVertical)
           view (doto view
-                 (.addEventListener "click" #(print "view clicked " (rand-int 10) ))
                  (.addEventListener "scroll" ($ c :handleScroll)))]
       (if (not (u/get-scrollbar-width))
         nil
@@ -211,7 +205,6 @@ parameter to make it accessable .")
    {:handleScroll
     (fn [e]
       (this-as c
-        (print "scroll....")
         (let [{:keys [on-scroll on-scroll-frame]}  (r/props c)]
           (if on-scroll
             (on-scroll e))
@@ -468,11 +461,6 @@ parameter to make it accessable .")
                             (* (- track-vh thumb-vh)))
                 thumb-vs {:height thumb-vh
                          :transform (str "translateY(" thumb-vy"px)")}]
-            (print scroll-left client-width scroll-width
-                   scroll-top client-height scroll-height)
-            (print "track-hw" track-hw)
-            (print "track v h" track-vh)
-            (print "thumb vs" thumb-vs)
             (if hide-tracks-when-not-needed
               (let [track-hs {:visibility (if (> scroll-width client-width) "visible" "hidden")}
                     track-vs {:visibility (if (> scroll-height client-height) "visible" "hidden")}]
