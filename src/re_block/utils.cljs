@@ -15,6 +15,8 @@
      (apply assoc m k v kvs)
      m)))
 
+
+;; MARK react use
 (defn class
   [& clss]
   (reduce (fn [pre cls]
@@ -28,6 +30,29 @@
                    :else (string/join " " (distinct cls)))))
           "" clss))
 
+(defn reagent-props
+  [ele]
+  {:pre [(vector? ele)]}
+  (let [[_ ps & _] ele]
+    (if (map? ps)
+      ps {})))
+
+(defn clone-element
+  " the view is a vector with
+  [:tag props  & children]"
+  ([view props]
+   (clone-element view props nil))
+  (  [view props children]
+   (let [[tag ps & old] view
+         [ps old] (if (map? ps)
+                    [ps old]
+                    [{} (into [ps] old)])
+         props (merge ps props)]
+     (if children
+       (if (not (vector? (first children))) ; single child
+         [tag props children]
+         (into [tag props] children))
+       (into [tag props ] old)))))
 ;; js world
 
 (defn $

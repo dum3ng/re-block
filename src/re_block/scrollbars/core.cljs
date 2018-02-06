@@ -16,21 +16,6 @@
   (apply js/Object.assign   #js{} os ))
 
 
-(defn- clone-element
-  " the view is a vector with
-  [:tag props  & children]"
-  ([view props]
-   (clone-element view props nil))
-  (  [view props children]
-   (let [[tag ps & old] view
-         props (merge ps props)]
-     (if children
-       (if (not (vector? (first children))) ; single child
-         [tag props children]
-         (into [tag props] children))
-       (into [tag props ] old)))))
-
-
 (defn- get-scroll
   [p c]
   (if (not (.-view c))
@@ -552,19 +537,19 @@ parameter to make it accessable .")
                                     {:display "none"}))]
         [(keyword tag-name) (merge props {:style container-style
                                           :ref #(aset this "container" %)})
-         (clone-element (render-view {:style view-style})
+         (uu/clone-element (render-view {:style view-style})
                         {:key "view"
                          :ref #(aset this "view" %)}
                         children)
-         (clone-element (render-track-horizontal {:style track-horizontal-style})
+         (uu/clone-element (render-track-horizontal {:style track-horizontal-style})
                 {:key "trackHorizontal"
                  :ref #(aset this "trackHorizontal" %)}
-                (clone-element (render-thumb-horizontal {:style styles/thumb-horizontal-style-default})
+                (uu/clone-element (render-thumb-horizontal {:style styles/thumb-horizontal-style-default})
                        {:ref #(aset this "thumbHorizontal" %)}))
-         (clone-element (render-track-vertical {:style track-vertical-style})
+         (uu/clone-element (render-track-vertical {:style track-vertical-style})
                 {:key "trackVertical"
                  :ref #(aset this "trackVertical" %)}
-                (clone-element (render-thumb-vertical {:style styles/thumb-vertical-style-default})
+                (uu/clone-element (render-thumb-vertical {:style styles/thumb-vertical-style-default})
                        {:ref #(aset this "thumbVertical" %)}))]
         ))
 

@@ -2,7 +2,8 @@
   (:require [devcards.core :refer-macros [defcard]]
             [reagent.core :as r]
             [re-block.b4.button-group :refer [-button-group]]
-            [re-block.b4.core :as b4]))
+            [re-block.b4.core :as b4]
+            [re-block.b4.icon :as icon]))
 
 
 (defcard x
@@ -80,3 +81,26 @@
                  [b4/card-body "card body"
                   [b4/card-title "card title"]
                   [b4/card-text "card text"]]]))
+
+(defcard icon-demo
+  (r/as-element [icon/iconic {:icon-name "account-login"}]))
+
+(defcard checkbox-demo
+  (r/as-element [
+                 (fn []
+                   (let [checked (r/atom true)]
+                     (fn []
+                       [b4/checkbox {:title "checkbox"
+                                     :on-change #(swap! checked not)
+                                     :checked @checked} ])))]))
+
+(defcard list-group-demo
+  (r/as-element [b4/list-group 
+                 [:h2 "ahaha"]
+                 [b4/list-group-item {:header "text header"}
+                  "one"]
+                 [b4/list-group-item {:header [icon/iconic {:icon-name "account-login"}]} "two"]
+                 [b4/list-group-item "three"]]))
+(defcard tooltip-demo
+  (r/as-element [b4/button "I have a tooltip"
+                 [b4/tooltip "tooltip"]]))
