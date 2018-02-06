@@ -9,17 +9,7 @@
              cls
              (str cls " " %))))
 
-(defn class
-  [& clss]
-  (reduce (fn [pre cls]
-            (str pre
-                 (cond
-                   (string? cls) (str cls " ")
-                   (map? cls) (reduce-kv
-                               (fn [p k v]
-                                 (str p " " (if v (name k)))) "" cls)
-                   :else (string/join " " (distinct cls)))))
-          "" clss))
+
 
 ;; react bootstrap
 (defn prefix
@@ -60,11 +50,26 @@
 (defn bs-class
   [cls view]
   (fn [props & children]
-    (apply view (merge {:bs-class cls}
-                       props) children )))
+    (let [[props children] (if (map? props)
+                             [props children]
+                             [{} (into [props ] children)])]
+      (apply view (merge {:bs-class cls}
+                         props) children ))))
 
 (defn bs-style
   [style view]
   (fn [props & children]
-    (apply view (merge {:bs-style style} props)
-           children)))
+    (let [[props children] (if (map? props)
+                             [props children]
+                             [{} (into [props ] children)])]
+      (apply view (merge {:bs-style style} props)
+             children) )))
+
+(defn bs-size
+  [size view]
+  (fn [props & children]
+    (let [[props children] (if (map? props)
+                             [props children]
+                             [{} (into [props ] children)])]
+      (apply view (merge {:bs-size size} props)
+             children) )))

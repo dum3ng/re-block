@@ -106,6 +106,19 @@
 (defcard three
   (r/as-element [reag {:a 4} [:h2 "children h2"]  ]))
 
+(defn alist
+  [& cs]
+  (into [:ol {:color "red"}]
+      cs  ))
+
+(defn item
+  [c]
+  [:li c])
+
+(defcard list-demo
+  (r/as-element [alist [item "one"]
+                 [item "two"]]))
+
 (defcard demo-card
   (r/as-element [real-demo]))
 

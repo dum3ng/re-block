@@ -6,12 +6,27 @@
 
 ;; general use
 (defn assoc-if
-  [m pred k v]
-  (if pred
-    (assoc m k v)
-    m))
+  ([m pred k v]
+   (if pred
+     (assoc m k v)
+     m))
+  ([m pred k v & kvs]
+   (if pred
+     (apply assoc m k v kvs)
+     m)))
 
-
+(defn class
+  [& clss]
+  (reduce (fn [pre cls]
+            (str pre
+                 (cond
+                   (nil? cls) ""
+                   (string? cls) (str cls " ")
+                   (map? cls) (reduce-kv
+                               (fn [p k v]
+                                 (str p " " (if v (name k)))) "" cls)
+                   :else (string/join " " (distinct cls)))))
+          "" clss))
 
 ;; js world
 

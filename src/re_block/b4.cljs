@@ -1,6 +1,7 @@
 (ns re-block.b4
   (:require [devcards.core :refer-macros [defcard]]
             [reagent.core :as r]
+            [re-block.b4.button-group :refer [-button-group]]
             [re-block.b4.core :as b4]))
 
 
@@ -26,15 +27,52 @@
 (defcard alert-demo
   (r/as-element [-alert-demo] ))
 
-(defcard button-view
+(defcard button-demo
   (r/as-element [:div
                  [b4/button "default button"]
                  [:hr]
-                 [b4/button {:type "success"} "hello button"]
+                 [b4/button {:bs-style "success"
+                             :bs-size :large} "hello button"]
                  [:hr]
-                 [b4/button {:href "#" :type "info"}
-                  [:span.text-light "link button"]]]))
+                 [b4/button {:href "#" :bs-style "info"}
+                  [:span.text-dark "link button"]
+                  [:span.text-danger " and danger "]]]))
 
+(defcard button-group-demo
+  (r/as-element [b4/button-group
+                 [b4/button {:bs-style :primary} "primary"]
+                 [b4/button {:bs-style :secondary} "second"]
+                 [b4/button {:bs-style :primary} "primary"]]))
+
+(defcard badge-demo
+  (r/as-element [:div
+                 [:h5 "button badge"]
+                 [b4/button {:bs-style "info"
+                             :bs-size :lg} "badge "
+                  [b4/badge {:bs-style :secondary} 3]]
+                 [:h5 "badges"]
+                 [b4/badge {:bs-style "primary"}
+                  "primary"]
+                 [b4/badge {:bs-style "link"}
+                  "link"]
+                 [b4/badge {:bs-style "inverse"}
+                  "inverse"]
+                 [b4/badge {:bs-style "success"}
+                  "success"]
+                 [b4/badge {:bs-style "danger"}
+                  "danger"]
+                 [b4/badge {:bs-style "light"}
+                  "light"]
+                 [b4/badge {:bs-style "dark"}
+                           "dark"]
+                 ]))
+
+(defcard breadcrumb-demo
+  (r/as-element [b4/breadcrumb
+                 [b4/breadcrumb-item {:active false} "three"]
+                 [b4/breadcrumb-item {:active false} "two"]
+                 [b4/breadcrumb-item {:active true} "one"]
+                 ]))
 
 (defcard card-demo
   (r/as-element [b4/card {:style {:width 200}}
