@@ -8,6 +8,23 @@
   (let [tag :h1]
     (r/as-element [:h1.btn.btn-warning "error"])))
 
+(defcard close-button
+  (r/as-element [b4/close-button]))
+
+(defn -alert-demo
+  []
+  (let [show (r/atom true)]
+    (fn []
+      [b4/card
+       [b4/card-body
+        [b4/button {:on-click #(swap! show not)} "toggle"]
+        [b4/alert {:bs-size :large
+                   :bs-style :success
+                   :style {:display (if @show "inherit" "none")}
+                   :on-dismiss #(do (print "dismiss")(swap! show not)) }
+         "message"]]])))
+(defcard alert-demo
+  (r/as-element [-alert-demo] ))
 
 (defcard button-view
   (r/as-element [:div

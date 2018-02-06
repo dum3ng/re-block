@@ -9,7 +9,7 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.9.946"]
                  [devcards "0.2.4"]
-                 ;; [sablono "0.7.4"]
+                 [sablono "0.7.4"]
                  
                  ;; need to specify this for sablono
                  ;; when not using devcards

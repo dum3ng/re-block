@@ -1,7 +1,19 @@
 (ns re-block.utils
   (:require [clojure.string :as string]))
 
+
 (declare dash->camel)
+
+;; general use
+(defn assoc-if
+  [m pred k v]
+  (if pred
+    (assoc m k v)
+    m))
+
+
+
+;; js world
 
 (defn $
   [el p]
