@@ -12,6 +12,8 @@
 
    [re-block.b4.list-group :as list-group]
    [re-block.b4.list-group-item :as list-group-item ]
+
+   [re-block.b4.media :as media]
    [re-block.b4.nav :as nav]
    
    [re-block.b4.card :as card]
@@ -44,4 +46,14 @@
 (def list-group-item list-group-item/list-group-item)
 
 
+(def media media/media)
+(def media-body media/media-body)
+;; (def media media/media)
+
 (def tooltip tooltip/tooltip)
+
+
+(defn img-dev
+  [p]
+  [:img (merge p
+               {:src  "http://diaryofasocialgal.com/wp-content/uploads/2016/03/placeholder.png"})])
