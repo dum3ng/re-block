@@ -20,7 +20,7 @@
 (defn class
   [& clss]
   (reduce (fn [pre cls]
-            (str pre
+            (str pre " "
                  (cond
                    (nil? cls) ""
                    (string? cls) (str cls " ")

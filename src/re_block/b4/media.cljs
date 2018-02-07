@@ -37,8 +37,8 @@
         clss (uu/class
               class (u/get-class-set bsp))]
     (if (fn? tag )
-      (apply tag (merge props {:class clss}) children)
-      (into [(keyword tag) (merge props {:class clss})]
+      (apply tag (merge eps {:class clss}) children)
+      (into [(keyword tag) (merge eps {:class clss})]
             children))))
 
 (def media-body

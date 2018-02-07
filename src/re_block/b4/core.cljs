@@ -9,7 +9,8 @@
    [re-block.b4.checkbox :as checkbox]
 
    [re-block.b4.close-button :as cb]
-
+   [re-block.b4.grid :as grid]
+   
    [re-block.b4.list-group :as list-group]
    [re-block.b4.list-group-item :as list-group-item ]
 
@@ -17,6 +18,7 @@
    [re-block.b4.nav :as nav]
    
    [re-block.b4.card :as card]
+   [re-block.b4.radio :as radio ]
    [re-block.b4.tooltip :as tooltip]
 
    ))
@@ -42,14 +44,19 @@
 (def card-body card/card-body)
 (def card card/card)
 
+
+(def grid grid/grid)
+(def row grid/row)
+(def col grid/col)
+
 (def list-group list-group/list-group)
 (def list-group-item list-group-item/list-group-item)
 
 
 (def media media/media)
 (def media-body media/media-body)
-;; (def media media/media)
 
+(def radio radio/radio)
 (def tooltip tooltip/tooltip)
 
 

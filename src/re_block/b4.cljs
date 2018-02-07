@@ -94,6 +94,22 @@
                                      :on-change #(swap! checked not)
                                      :checked @checked} ])))]))
 
+(defcard grid-demo
+  (r/as-element [b4/grid
+                 [b4/row
+                  [b4/col {:size 3
+                           :style {:background-color "red"}} "col"]
+                  [b4/col {:size 3
+                           :sm 4 :lg 3 :align-self :flex-start
+                           :style {:background-color "yellow"}} "col"]
+                  [b4/col {:style {:background-color "green"}} "col"]]
+                 [b4/row {:gutters false}
+                  [b4/col {:size 3
+                           :style {:background-color "red"}} "col"]
+                  [b4/col {:size 3
+                           :style {:background-color "yellow"}} "col"]
+                  [b4/col {:size :auto :style {:background-color "green"}} "col"]]]))
+
 (defcard list-group-demo
   (r/as-element [b4/list-group 
                  [:h2 "ahaha"]
@@ -113,6 +129,10 @@
                    [b4/media-body "Aliquam erat volutpat.  Nunc eleifend leo vitae magna.  In id erat non orci commodo lobortis.  Proin neque massa, cursus ut, gravida ut, lobortis eget, lacus.  Sed diam.  Praesent fermentum tempor tellus.  Nullam tempus.  Mauris ac felis vel velit tristique imperdiet.  Donec at pede.  Etiam vel neque nec dui dignissim bibendum.  Vivamus id enim.  Phasellus neque orci, porta a, aliquet quis, semper a, massa.  Phasellus purus.  Pellentesque tristique imperdiet tortor.  Nam euismod tellus id erat.
 
 "]]]]))
+
+
+(defcard radio-demo
+  (r/as-element [b4/radio {} [:span.text-danger.px-1 "I have a tooltip"]]))
 
 (defcard tooltip-demo
   (r/as-element [b4/button "I have a tooltip"
