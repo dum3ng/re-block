@@ -6,6 +6,7 @@
    [re-block.b4.badge :as badge]
    [re-block.b4.breadcrumb :as breadcrumb]
    [re-block.b4.breadcrumb-item :as bi]
+   [re-block.b4.card :as card]
    [re-block.b4.checkbox :as checkbox]
 
    [re-block.b4.close-button :as cb]
@@ -17,7 +18,7 @@
    [re-block.b4.media :as media]
    [re-block.b4.nav :as nav]
    
-   [re-block.b4.card :as card]
+   [re-block.b4.progressbar :as progressbar ]
    [re-block.b4.radio :as radio ]
    [re-block.b4.tooltip :as tooltip]
 
@@ -56,6 +57,7 @@
 (def media media/media)
 (def media-body media/media-body)
 
+(def progressbar progressbar/progressbar)
 (def radio radio/radio)
 (def tooltip tooltip/tooltip)
 

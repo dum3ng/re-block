@@ -95,20 +95,27 @@
                                      :checked @checked} ])))]))
 
 (defcard grid-demo
-  (r/as-element [b4/grid
-                 [b4/row
-                  [b4/col {:size 3
-                           :style {:background-color "red"}} "col"]
-                  [b4/col {:size 3
-                           :sm 4 :lg 3 :align-self :flex-start
-                           :style {:background-color "yellow"}} "col"]
-                  [b4/col {:style {:background-color "green"}} "col"]]
+  (r/as-element [:div
+                 [b4/grid
+                  [b4/row
+                   [b4/col {:size 3
+                            :style {:background-color "red"}} "col"]
+                   [b4/col {:size 3
+                            :sm 4 :lg 3 :align-self :flex-start
+                            :style {:background-color "yellow"}} "col"]
+                   [b4/col {:style {:background-color "green"}} "col"]]
+                  [b4/row 
+                   [b4/col {:size 3
+                            :order :last
+                            :style {:background-color "red"}} "I shoud be last"]
+                   [b4/col {:size 3
+                            :style {:background-color "yellow"}} "col"]
+                   [b4/col {:size :auto :style {:background-color "green"}} "col"]]]
+                 [:h3 "no gutters"]
                  [b4/row {:gutters false}
-                  [b4/col {:size 3
-                           :style {:background-color "red"}} "col"]
-                  [b4/col {:size 3
-                           :style {:background-color "yellow"}} "col"]
-                  [b4/col {:size :auto :style {:background-color "green"}} "col"]]]))
+                  [b4/col "one"]
+                  [b4/col "two"]
+                  ]]))
 
 (defcard list-group-demo
   (r/as-element [b4/list-group 
@@ -130,6 +137,10 @@
 
 "]]]]))
 
+(defcard progressbar-demo
+  (r/as-element [b4/progressbar {:now 20
+                                 :striped true
+                                 :label "20%"}]))
 
 (defcard radio-demo
   (r/as-element [b4/radio {} [:span.text-danger.px-1 "I have a tooltip"]]))

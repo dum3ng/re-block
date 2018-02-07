@@ -19,7 +19,7 @@
    (let [bs-cls (-> (or (:bs-class bs-props) "")
                     name string/trim)
          cls (name (or cls ""))]
-     (str bs-cls (if (not (empty? cls))
+     (str bs-cls (if (not (string/blank? cls))
                    (str "-" cls)))   )))
 
 (defn get-bs-props
