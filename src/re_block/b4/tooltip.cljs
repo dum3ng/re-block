@@ -28,7 +28,7 @@
     [:div (merge eps {:role "tooltip"
                       :class clss
                       :style outer-style})
-     [:div {:class (u/prefix bsp "arrow")
+     [:div {:class  "arrow"
             :style arrow-style}]
      (into [:div {:class (u/prefix bsp "inner")}]
            children)]

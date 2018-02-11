@@ -146,5 +146,4 @@
   (r/as-element [b4/radio {} [:span.text-danger.px-1 "I have a tooltip"]]))
 
 (defcard tooltip-demo
-  (r/as-element [b4/button "I have a tooltip"
-                 [b4/tooltip "tooltip"]]))
+  (r/as-element [b4/tooltip {:class "in"} "tooltip"]))

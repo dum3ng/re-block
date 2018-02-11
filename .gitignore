@@ -1,7 +1,7 @@
 .#*
 .nrepl-port
 figwheel_server.log
-
+.lein-repl-history
 
 target
 

@@ -7,6 +7,7 @@
    [clojure.string :as string]
    [re-block.scrollbars]
    [re-block.b4]
+   [re-block.bootstrap]
    [re-block.scrollbars.core :refer [scrollbars]])
   (:require-macros
    [devcards.core :as dc :refer [defcard deftest]]
